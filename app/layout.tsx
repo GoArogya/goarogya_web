@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import { cn } from "@/lib/utils";
 
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   title: "GoArogya",
   description:
     "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
-  icons: {
-    icon: "/assets/icons/logo-icon.svg",
-  },
+  // icons: {
+  //   icon: "/assets/icons/logo-icon.svg",
+  // },
 };
 
 export default function RootLayout({
