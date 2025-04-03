@@ -7,7 +7,7 @@ import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Form,} from "@/components/ui/form"
 
-// import { createUser } from "@/lib/actions/patient.actions";
+import { createUser } from "@/lib/actions/patient.actions";
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import CustomFormField from "../CustomFormField"
