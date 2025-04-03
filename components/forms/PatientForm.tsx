@@ -15,7 +15,7 @@ import SubmitButton from "../SubmitButton";
 import { UserFormValidation } from "@/lib/validation"
 
 export enum FormFieldType {
-  INPUT = "input",
+INPUT = "input",
 TEXTAREA = 'textarea',
 PHONE_INPUT = 'phone_input',
 CHECKBOX = 'checkbox',
@@ -32,6 +32,7 @@ const formSchema = z.object({
 const PatientForm = () => {
   // 1. Define your form.
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
