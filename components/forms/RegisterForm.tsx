@@ -26,7 +26,8 @@ import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton";
 import { UserFormValidation } from "@/lib/validation"
 
-import { FormFieldType } from "./PatientForm";
+import { FormFieldType } from "./PatientForm"
+import Image  from "next/image";
  
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -83,13 +84,9 @@ const RegisterForm = ({user} : {user : User }) => {
 
         <section className="space-y-6">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Personal Information</h2>
+            <h2 className="sub-header">Personal Information 📜 Scroll Down 👇 </h2>
           </div>
           </section>
-
-          
-          
-        
 
         {/* NAME */}
 
@@ -203,7 +200,8 @@ const RegisterForm = ({user} : {user : User }) => {
           </div>
 
           {/* PRIMARY CARE PHYSICIAN */}
-          {/* <CustomFormField
+          <h2 className="mb-7 flex ">Select Your Doctor from below 👇 </h2>
+          <CustomFormField
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="primaryPhysician"
@@ -224,7 +222,7 @@ const RegisterForm = ({user} : {user : User }) => {
                 </div>
               </SelectItem>
             ))}
-          </CustomFormField> */}
+          </CustomFormField>
 
           {/* INSURANCE & POLICY NUMBER */}
           <div className="flex flex-col gap-6 xl:flex-row">
@@ -233,7 +231,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="insuranceProvider"
               label="Insurance provider"
-              placeholder="BlueCross BlueShield"
+              placeholder=" Enter Insurance provider"
             />
 
             <CustomFormField
@@ -241,7 +239,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
-              placeholder="ABC123456789"
+              placeholder="IEnter nsurance policy number"
             />
           </div>
 
@@ -252,7 +250,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="allergies"
               label="Allergies (if any)"
-              placeholder="Peanuts, Penicillin, Pollen"
+              placeholder="Enter Allergies (if any)"
             />
 
             <CustomFormField
@@ -260,7 +258,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="currentMedication"
               label="Current medications"
-              placeholder="Ibuprofen 200mg, Levothyroxine 50mcg"
+              placeholder="Current Medication ( Eg:- Levothyroxine 50mcg) "
             />
           </div>
 
@@ -271,7 +269,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="familyMedicalHistory"
               label=" Family medical history (if relevant)"
-              placeholder="Mother had brain cancer, Father has hypertension"
+              placeholder="Family medical history (if relevant) {Mother had brain cancer, Father has hypertension}"
             />
 
             <CustomFormField
@@ -279,7 +277,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="pastMedicalHistory"
               label="Past medical history"
-              placeholder="Appendectomy in 2015, Asthma diagnosis in childhood"
+              placeholder="Past Medical History (Asthma diagnosis in childhood)"
             />
           </div>
         </section>

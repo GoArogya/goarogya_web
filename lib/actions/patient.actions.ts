@@ -1,7 +1,15 @@
 "use server"; // Add this to mark as a server action
 
 import { ID, Query } from "node-appwrite";
-import { users } from "../appwrite.config";
+import { 
+  BUCKET_ID,
+  DATABASE_ID,
+  ENDPOINT,
+  PATIENT_COLLECTION_ID,
+  // PROJECT_ID,
+  databases,
+  storage,
+  users } from "../appwrite.config";
 import { parseStringify } from "../utils";
 
 // Define the type for user parameters if not already defined elsewhere

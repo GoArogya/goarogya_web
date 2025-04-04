@@ -1,4 +1,3 @@
-
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -6,7 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const parseStringify = <T>(value: T): T => JSON.parse(JSON.stringify(value));
+export const parseStringify = <T>(value: T): T => {
+  // Check if value is undefined or null and return it as is
+  if (value === undefined || value === null) {
+    return value;
+  }
+  return JSON.parse(JSON.stringify(value));
+};
 
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file);
 
