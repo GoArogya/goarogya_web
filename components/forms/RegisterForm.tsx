@@ -25,6 +25,7 @@ import { useState } from "react"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton";
 import { UserFormValidation } from "@/lib/validation"
+import { FileUploader } from "../FileUploader";
 
 import { FormFieldType } from "./PatientForm"
 import Image  from "next/image";
@@ -239,7 +240,7 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="insurancePolicyNumber"
               label="Insurance policy number"
-              placeholder="IEnter nsurance policy number"
+              placeholder="Enter Insurance policy number"
             />
           </div>
 
@@ -258,7 +259,8 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="currentMedication"
               label="Current medications"
-              placeholder="Current Medication ( Eg:- Levothyroxine 50mcg) "
+              placeholder="Enter Your Current Medication
+              here ( Eg:- Levothyroxine 50mcg) "
             />
           </div>
 
@@ -269,7 +271,8 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="familyMedicalHistory"
               label=" Family medical history (if relevant)"
-              placeholder="Family medical history (if relevant) {Mother had brain cancer, Father has hypertension}"
+              placeholder="Enter Family medical history (if relevant) 
+              {Mother had brain cancer, Father has hypertension}"
             />
 
             <CustomFormField
@@ -277,9 +280,78 @@ const RegisterForm = ({user} : {user : User }) => {
               control={form.control}
               name="pastMedicalHistory"
               label="Past medical history"
-              placeholder="Past Medical History (Asthma diagnosis in childhood)"
+              placeholder="Enter Past Medical History (Asthma diagnosis in childhood)"
             />
           </div>
+        </section>
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Identification and Verfication</h2>
+          </div>
+
+          <CustomFormField
+            fieldType={FormFieldType.SELECT}
+            control={form.control}
+            name="identificationType"
+            label="Identification Type"
+            placeholder="Select identification type"
+          >
+            {IdentificationTypes.map((type, i) => (
+              <SelectItem key={type + i} value={type}>
+                {type}
+              </SelectItem>
+            ))}
+          </CustomFormField>
+
+          <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="identificationNumber"
+            label="Identification Number"
+            placeholder="Identification Number     (ID NUMBER)"
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.SKELETON}
+            control={form.control}
+            name="identificationDocument"
+            label="Scanned Copy of Identification Document"
+            renderSkeleton={(field) => (
+              <FormControl>
+                <FileUploader files={field.value} onChange={field.onChange} />
+              </FormControl>
+            )}
+          />
+        </section>
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Consent and Privacy</h2>
+          </div>
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="treatmentConsent"
+            label="I consent to receive treatment for my health condition."
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="disclosureConsent"
+            label="I consent to the use and disclosure of my health
+            information for treatment purposes."
+          />
+
+          <CustomFormField
+            fieldType={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="privacyConsent"
+            label="I acknowledge that I have reviewed and agree to the
+            privacy policy"
+          />
         </section>
        
       
