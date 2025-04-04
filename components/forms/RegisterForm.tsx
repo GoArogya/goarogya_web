@@ -5,7 +5,19 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation";
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
-import { Form,} from "@/components/ui/form"
+
+
+import { Form, FormControl } from "@/components/ui/form";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { SelectItem } from "@/components/ui/select";
+import {
+  Doctors,
+  GenderOptions,
+  IdentificationTypes,
+  PatientFormDefaultValues,
+} from "@/constants";
+
 
 import { createUser } from "@/lib/actions/patient.actions";
 import { Input } from "@/components/ui/input"
@@ -64,23 +76,87 @@ const RegisterForm = ({user} : {user : User }) => {
   return (
     <Form {...form}>
     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flx-1">
-        <section className="mb-6  spcae-y-4 flex items-center justify-between">
-        
-          <p className="text-dark-700">Get started with appointments 🗓️.</p>
+        <section className="spcae-y-4 ">
+        <h1 className="header">Namaste 🙏 </h1>
+          <p className="text-dark-700">Lets know more about yourself.</p>
         </section>
 
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Personal Information</h2>
+          </div>
+          </section>
+
+          
+          
         
 
-       <CustomFormField 
-               fieldType={FormFieldType.INPUT}
-               control={form.control}
-               name="email"
-               label="Full name"
-               placeholder="gauravchaudhary@gmail.com"
-               iconSrc="/assets/icons/email.svg"
-               iconAlt="email"
-               
-               />
+        {/* NAME */}
+
+        <CustomFormField
+            fieldType={FormFieldType.INPUT}
+            control={form.control}
+            name="name"
+            label="Full Name"
+            placeholder="Enter your name "
+            iconSrc="/assets/icons/user.svg"
+            iconAlt="user"
+          />
+
+          {/* EMAIL & PHONE */}
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="email"
+              label="Email address"
+              placeholder="enter your email"
+              iconSrc="/assets/icons/email.svg"
+              iconAlt="email"
+            />
+
+            <CustomFormField
+              fieldType={FormFieldType.PHONE_INPUT}
+              control={form.control}
+              name="phone"
+              label="Phone Number"
+              placeholder="(555) 123-4567"
+            />
+          </div>
+
+          {/* BirthDate & Gender */}
+          <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+              fieldType={FormFieldType.DATE_PICKER}
+              control={form.control}
+              name="birthDate"
+              label="Date of birth"
+            />
+            <CustomFormField
+              fieldType={FormFieldType.SKELETON}
+              control={form.control}
+              name="gender"
+              label="Gender"
+              renderSkeleton={(field) => (
+                <FormControl>
+                  <RadioGroup
+                    className="flex h-11 gap-6 xl:justify-between"
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    {GenderOptions.map((option, i) => (
+                      <div key={option + i} className="radio-group">
+                        <RadioGroupItem value={option} id={option} />
+                        <Label htmlFor={option} className="cursor-pointer">
+                          {option}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </FormControl>
+              )}
+            />
+            </div>
        
       
        <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
