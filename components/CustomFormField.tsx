@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Control } from "react-hook-form";
 import { FormFieldType } from "./forms/PatientForm";
 import Image from "next/image";
+import {Checkbox} from "./ui/checkbox";
 
 import ReactDatePicker from "react-datepicker";
 
@@ -88,6 +89,21 @@ interface CustomProps {
             onChange={field.onChange}
             className="input-phone"
           />
+        </FormControl>
+      );
+      case FormFieldType.CHECKBOX:
+      return (
+        <FormControl>
+          <div className="flex items-center gap-4">
+            <Checkbox
+              id={props.name}
+              checked={field.value}
+              onCheckedChange={field.onChange}
+            />
+            <label htmlFor={props.name} className="checkbox-label">
+              {props.label}
+            </label>
+          </div>
         </FormControl>
       );
 

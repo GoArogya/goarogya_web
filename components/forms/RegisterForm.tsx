@@ -25,7 +25,7 @@ import { useState } from "react"
 import CustomFormField from "../CustomFormField"
 import SubmitButton from "../SubmitButton";
 import { UserFormValidation } from "@/lib/validation"
-import { FileUploader } from "../FileUploader";
+import { FileUploader } from "@/components/FileUploader";
 
 import { FormFieldType } from "./PatientForm"
 import Image  from "next/image";
