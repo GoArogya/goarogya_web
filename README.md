@@ -3,22 +3,6 @@ Welcome to GoArogya – a complete solution for managing healthcare appointments
 
 Table of Contents
 Introduction
-
-Tech Stack
-
-Features
-
-Quick Start
-
-Snippets (Code to Copy)
-
-Assets
-
-More
-
-Tutorial
-
-Introduction
 GoArogya is a comprehensive healthcare patient management application designed to streamline the interaction between patients and healthcare providers. This application allows patients to:
 
 Register and create personal profiles.
@@ -88,18 +72,11 @@ npm (Node Package Manager)
 
 Cloning the Repository
 Clone the repository to your local machine:
-
-bash
-Copy
-Edit
 git clone https://github.com/teamgoarogya/goarogya.git
 cd goarogya
 Installation
-Install all the project dependencies using npm:
 
-bash
-Copy
-Edit
+Install all the project dependencies using npm:
 npm install
 Running the Application
 After installation, start the development server:
